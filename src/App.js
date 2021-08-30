@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
-import Person from './Person/Person'
+import './App.css'; 
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 
@@ -18,10 +17,7 @@ class App extends Component {
     return (
       <div className="App"> 
           <h1>Hey! I am learning REACT</h1> 
-          <h2>Myself, Amir Ahad</h2>
-          {/* <Person name="Amir" age="22"/>
-          <Person name="Raza" age="21"/>
-          <Person name="Ahad" age="25"/>  */}
+          <h2>Myself, Amir Ahad</h2> 
           <UserOutput userName={this.state.username} />
           <UserOutput userName="Raza" />
           <UserOutput userName={this.state.username} />
