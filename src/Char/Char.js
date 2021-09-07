@@ -7,6 +7,7 @@ const char = (props) =>{
         margin: '16px',
         border: '1px solid black',
         textAlign: 'center',
+        cursor: 'pointer',
     };
 
     return(
