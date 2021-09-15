@@ -16,17 +16,28 @@ class counter extends Component{
         this.setState({ count: this.state.count + 1})
     }
 
+    handleDecrement = () => { 
+        this.setState({ count: this.state.count - 1})
+    }
+
+    // reset = () => { 
+    //     this.setState({ count: 0})
+    // }
+
     render(){
        
 
         return(
             <div>
                 {/* <img src={this.state.imageUrl} alt="anything"/><br/> */}
+                <button onClick={this.handleDecrement} className="m-2 btn  btn-secondary ">-</button>
                 <span className={ this.getBadgeClasses() }>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} className="m-2 btn  btn-secondary btn-sn">Increment</button>
+                <button onClick={this.handleIncrement} className="m-2 btn  btn-secondary ">+</button>
                 {/* <ul>
                     {this.conditionalRendering()}
                 </ul> */}
+
+                {/* <button onClick={this.reset} className="m-2 btn  btn-secondary btn-lg">Reset All</button> */}
             </div>
         );
     }
@@ -36,7 +47,14 @@ class counter extends Component{
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += (this.state.count === 0) ? "warning" : "primary";
+        // classes += (this.state.count <= 0) ? "warning" : "primary";
+        if(this.state.count === 0){
+            classes += "warning"
+        }else if(this.state.count <= 0){
+            classes += "danger"
+        }else{
+            classes += "primary"
+        }
         return classes;
     }
 
