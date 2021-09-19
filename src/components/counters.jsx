@@ -1,71 +1,73 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React from 'react'; 
 import Counter from "./counter";
 
-class Counters extends Component {
-  state = {
-    counters: [
-      { id: 1, value: 10 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 },
-      { id: 5, value: 0 },
-    ],
-  };
 
-  handleIncrement = (counter) => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    counter[index] = { ...counter };
-    counters[index].value++;
-    this.setState({ counters });
-  };
 
-  handleDecrement = (counter) => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    counter[index] = { ...counter };
-    counters[index].value--;
-    this.setState({ counters });
-  };
+//Class Component
 
-  handleDelete = (counterId) => {
-    const counters = this.state.counters.filter((c) => c.id !== counterId);
-    this.setState({ counters });
-  };
+// class Counters extends Component {
+//   render() {
+//     return (
+//       <>
+//         {this.props.counters.map((counter) => (
+//           <Counter
+//             key={counter.id}
+//             onIncrement={this.props.onIncrement}
+//             onDecrement={this.props.onDecrement}
+//             onDelete={this.props.onDelete}
+//             counter={counter}
+//             // value={counter.value}
+//             //selected
+//             // id={counter.id}}
+//             //
+//           />
+//         ))}
+//         <button
+//           onClick={this.props.onReset}
+//           className="btn btn-primary btn-lg m-3"
+//         >
+//           Reset All
+//         </button>
+//       </>
+//     );
+//   }
+// }
 
-  handleReset = () => {
-    const counters = this.state.counters.map((counter) => {
-      counter.value = 0;
-      return counter;
-    });
-    this.setState({ counters });
-  };
+// export default Counters;
 
-  render() {
-    return (
-      <div>
-        {this.state.counters.map((counter) => (
-          <Counter
-            key={counter.id}
-            onIncrement={this.handleIncrement}
-            onDecrement={this.handleDecrement}
-            onDelete={this.handleDelete}
-            counter={counter}
-            // value={counter.value}
-            //selected
-            // id={counter.id}}
-            //
-          />
-        ))}
-        <button
-          onClick={this.handleReset}
-          className="btn btn-primary btn-lg m-3"
-        >
-          Reset All
-        </button>
-      </div>
-    );
-  }
-}
+
+
+
+//Stateless Functional Component
+
+const Counters = ({
+  onReset,
+  counters,
+  onIncrement,
+  onDecrement,
+  onDelete,
+}) => {
+  return (
+    <>
+      {counters.map((counter) => (
+        <Counter
+          key={counter.id}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+          onDelete={onDelete} 
+          counter={counter}
+          // value={counter.value}
+          //selected
+          // id={counter.id}}
+          //
+        />
+      ))}
+      <button onClick={onReset} className="btn btn-primary btn-lg m-3">
+        Reset All
+      </button>
+    </>
+  );
+};
 
 export default Counters;
